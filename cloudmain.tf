@@ -1,3 +1,5 @@
+variable rglocation { }
+variable rgnmae {}
 resource "azurerm_virtual_network" "hcpvnet" {
   name                = "hcpvnet"
   address_space       = ["10.123.0.0/16"]
