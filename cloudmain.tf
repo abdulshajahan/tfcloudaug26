@@ -2,6 +2,10 @@ provider "azurerm" {
   # Configuration options
   features {}
 }
+variable rgname {
+type = string
+default = "TCS-TF-Lab
+}
 variable rglocation {
 type = string
 }
