@@ -1,12 +1,3 @@
-variable "rglocation" {
-  description = "Azure region"
-  type        = string
-}
-
-variable "rgname" {
-  description = "Resource Group name"
-  type        = string
-}
 resource "azurerm_virtual_network" "hcpvnet" {
   name                = "hcpvnet"
   address_space       = ["10.123.0.0/16"]
