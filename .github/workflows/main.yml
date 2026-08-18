@@ -1,0 +1,54 @@
+name: Terraform Azure Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+
+  terraform:
+
+    name: Terraform Deploy
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+
+      # 1. Checkout GitHub repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Install Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # 3. Verify Terraform
+      - name: Terraform version
+        run: terraform version
+
+      # 4. Initialize Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # 5. Validate Terraform
+      - name: Terraform Validate
+        run: terraform validate
+
+      # 6. Generate Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan
+
+      # 7. Deploy Azure infrastructure
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
