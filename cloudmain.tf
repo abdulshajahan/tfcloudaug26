@@ -20,6 +20,7 @@ default = "TCS-TF-Lab"
 }
 variable rglocation {
 type = string
+default = "centralindia"
 }
 resource "azurerm_virtual_network" "hcpvnet" {
   name                = "hcpvnet"
