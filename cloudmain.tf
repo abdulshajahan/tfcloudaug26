@@ -13,6 +13,7 @@ terraform {
 provider "azurerm" {
   # Configuration options
   features {}
+  resource_provider_registrations = "none"
 }
 variable rgname {
 type = string
