@@ -1,10 +1,6 @@
 name: Terraform Azure Deployment
 
-on:
-  push:
-    branches:
-      - main
-
+on: 
   workflow_dispatch:
 
 permissions:
